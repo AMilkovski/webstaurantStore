@@ -21,15 +21,18 @@ public class Search_page {
     @FindBy(xpath = "(//button[contains(@class,'text-white hidden')])[1]")
     public WebElement searchButtonClick;
 
-    /*
-    @FindBy()
-    public WebElement searchButton;
-*/
-    @FindBy(xpath = "//div[@id='paging']")
-    public WebElement buttonOfThePage;
 
-    @FindBy(xpath = "//ul[contains(@class, 'rounded-md inline-block font-semibold')]/li")
-    public List<WebElement> pages;
+    @FindBy(xpath = "//div[@id='ProductBoxContainer']/div/a/span")
+    public List<WebElement> allItemsFromList;
+
+    @FindBy(xpath = "//li[@class='inline-block leading-4 align-top rounded-r-md']")
+    public WebElement nextPageButton;
+
+    @FindBy(xpath = "//a[contains(@aria-label,'last page')]")
+    public WebElement lastPageButton;
+
+    @FindBy(xpath = "//input[@name=\"addToCartButton\"]")
+    public List<WebElement> addToCartButton;
 
 
 
