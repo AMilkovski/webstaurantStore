@@ -49,7 +49,7 @@ public class Search_test extends HomepageUrl {
 
         for (String eachItem : allItems) {
 
-            if (!eachItem.contains("Table")){
+            if (!eachItem.contains(ConfigurationReader.getProperty("hasWord"))){
                 System.err.println("Wrong title / List of wrong titles: " + eachItem);
             }
 

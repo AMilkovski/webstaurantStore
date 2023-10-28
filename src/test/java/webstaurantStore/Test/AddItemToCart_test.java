@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import webstaurantStore.Page.Cart_page;
 import webstaurantStore.Page.Search_page;
+import webstaurantStore.Utilities.ConfigurationReader;
 import webstaurantStore.Utilities.Driver;
 import webstaurantStore.baseURL.HomepageUrl;
 
@@ -21,14 +22,12 @@ public abstract class AddItemToCart_test extends HomepageUrl {
     Search_page searchPage = new Search_page();
     Cart_page cartPage = new Cart_page();
 
-    String searchFor = "stainless work table";
-
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
 
 
     @BeforeMethod
     public void searching(){
-        searchPage.searchButton.sendKeys(searchFor);
+        searchPage.searchButton.sendKeys(ConfigurationReader.getProperty("searchFor"));
         searchPage.searchButtonClick.click();
     }
     @Test
@@ -46,7 +45,7 @@ public abstract class AddItemToCart_test extends HomepageUrl {
         toCart.get(toCart.size() - 1).click();
 
 
-        Assert.assertTrue(cartPage.cartMessage.isDisplayed());
+        Assert.assertTrue(cartPage.cartMessage.isDisplayed(), "Cart may be empty or message just wasn't displayed");
 
 
 
