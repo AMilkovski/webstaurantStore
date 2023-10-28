@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import webstaurantStore.Page.Search_page;
+import webstaurantStore.Utilities.ConfigurationReader;
 import webstaurantStore.Utilities.Driver;
 import webstaurantStore.baseURL.HomepageUrl;
 
@@ -22,12 +23,10 @@ import java.util.List;
 public class Search_test extends HomepageUrl {
 
     Search_page searchPage = new Search_page();
-    String searchFor = "stainless work table";
-    String hasWord = "Table";
 
     @BeforeMethod
     public void searching(){
-        searchPage.searchButton.sendKeys(searchFor);
+        searchPage.searchButton.sendKeys(ConfigurationReader.getProperty("searchFor"));
         searchPage.searchButtonClick.click();
     }
 
@@ -54,7 +53,7 @@ public class Search_test extends HomepageUrl {
                 System.err.println("Wrong title / List of wrong titles: " + eachItem);
             }
 
-           Assert.assertTrue(eachItem.contains(hasWord), "Some items does not contain \"Table\"");
+           Assert.assertTrue(eachItem.contains(ConfigurationReader.getProperty("hasWord")), "Some items does not contain \"Table\"");
 
         }
 
